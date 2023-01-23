@@ -1,0 +1,37 @@
+.img-class{
+    text-align: center;
+    margin-top: 55px;
+    margin-bottom: 70px;
+}
+
+.container{
+    margin: auto;
+    background-color: white;
+    width: 642px;
+    height: 484px;
+    display: flex;
+    flex-direction: column;
+}
+
+.heading{
+    text-align: center;
+}
+
+.form-container input{
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 522px;
+    height: 48px;
+}
+
+.form-container{
+    text-align: center;
+}
+
+.btn-class{
+    text-align: center;
+}
+
+input.ng-invalid.ng-touched {
+    border: 2px solid red;
+}

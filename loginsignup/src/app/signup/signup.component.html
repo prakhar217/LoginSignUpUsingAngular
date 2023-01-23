@@ -1,0 +1,33 @@
+<div class="img-class">
+    <img src="../../assets/logo.png" alt="DigiValet">
+</div>
+
+<div class="container">
+    <h1 class="heading">Create an account</h1>
+    <div class="form-container">
+        <form action="" [formGroup]="signUpForm" (ngSubmit)="onSubmit()" >
+            <div class="form-group">
+                <input type="text" placeholder="Email" formControlName="email">
+                <small *ngIf="signUpForm.get('email')?.errors?.['required'] && signUpForm.get('email')?.touched" >Email cannot be empty</small>
+                <small *ngIf="signUpForm.get('email')?.errors?.['email'] && signUpForm.get('email')?.touched" >Email is invalid</small>   
+                <small *ngIf="signUpForm.get('email')?.errors?.['maxlength'] && signUpForm.get('email')?.touched && !signUpForm.get('email')?.errors?.['email']" >Email cannot be more than 30 characters</small>   
+                <small *ngIf="signUpForm.get('email')?.errors?.['emailif'] && signUpForm.get('email')?.touched">Email already exist</small>                                        
+            </div>
+            <div class="form-group">
+                <input type="text" placeholder="Username" formControlName="username">
+                <small *ngIf="signUpForm.get('username')?.errors?.['required'] && signUpForm.get('username')?.touched" >Username cannot be empty</small>
+                <small *ngIf="signUpForm.get('username')?.errors?.['maxlength'] && signUpForm.get('username')?.touched" >Username cannot be more than 20 characters</small> 
+                <small *ngIf="signUpForm.get('username')?.errors?.['user'] && signUpForm.get('username')?.touched">Username already exist</small> 
+            </div>
+            <div class="form-group">
+                <input type="password" placeholder="Password" formControlName="password">
+                <small *ngIf="signUpForm.get('password')?.errors?.['required'] && signUpForm.get('password')?.touched" >Password cannot be empty</small>
+                <small *ngIf="signUpForm.get('password')?.errors?.['maxlength'] && signUpForm.get('password')?.touched" >Password cannot be more than 20 characters</small> 
+                <small *ngIf="signUpForm.get('password')?.errors?.['pattern'] && signUpForm.get('password')?.touched" >Password is invalid</small> 
+            </div>
+            <div class="btn-class">
+                <button type="submit">Sign Up</button> 
+            </div>
+        </form>
+    </div>
+</div>

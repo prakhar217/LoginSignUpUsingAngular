@@ -1,0 +1,31 @@
+<div class="img-class">
+    <img src="../../assets/logo.png" alt="DigiValet">
+</div>
+
+<div class="container">
+    <h1 class="heading">Create an account</h1>
+
+    <div class="form-container">
+        <form action="" [formGroup]="signInForm" (ngSubmit)="onSubmit()">
+            <h5
+                *ngIf="(!signInForm.get('username')?.errors?.['user'] && signInForm.get('username')?.touched) || (!signInForm.get('password')?.errors?.['pass']&& signInForm.get('password')?.touched)">
+                Username or password is Wrong</h5>
+            <div class="form-group">
+                <input type="text" placeholder="Username" formControlName="username">
+                <small
+                    *ngIf="signInForm.get('username')?.errors?.['required'] && signInForm.get('username')?.touched">Username
+                    cannot be empty</small>
+            </div>
+            <div class="form-group">
+                <input type="password" placeholder="Password" formControlName="password">
+                <small
+                    *ngIf="signInForm.get('password')?.errors?.['required'] && signInForm.get('password')?.touched">Password
+                    cannot be empty</small>
+            </div>
+            <div class="forgetpassword"> <a [routerLink]="'/forgetpassword'">Forgot Password?</a></div>
+            <div class="btn-class">
+                <button type="submit">Sign in</button>
+            </div>
+        </form>
+    </div>
+</div>
