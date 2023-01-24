@@ -1,10 +1,22 @@
-.img-class{
+
+.forgetpassword{
+    text-align: right;
+    margin-right: 61px;
+    color:#16A0A9;
+    /* text-decoration: none;
+     */
+     list-style: none;
+}
+.forgetpassword a{
+    color: #16A0A9;  
+    text-decoration: none;
+}
+.img-class {
     text-align: center;
     margin-top: 55px;
     margin-bottom: 70px;
 }
-
-.container{
+.container {
     margin: auto;
     background-color: white;
     width: 642px;
@@ -13,25 +25,83 @@
     flex-direction: column;
 }
 
-.heading{
+.heading {
     text-align: center;
+    margin-top: 51px;
+    margin-bottom: 54px;
+    margin-top: 63px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 15px;
+    text-align: center;
+    color: #000000;
 }
 
-.form-container input{
+.form-group{
+    margin-bottom: 24px;
+}
+
+.form-container input {
     padding-left: 10px;
     padding-right: 10px;
     width: 522px;
     height: 48px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 15px;
+    color: #9A9A9A;
+    border: 1px solid #CCCCCC;
+    filter: drop-shadow(0px 0px 4px rgba(142, 163, 91, 0.25));
+    border-radius: 4px;
 }
 
-.form-container{
+.form-container input:focus{
+    outline: none;
+}
+
+.form-container {
     text-align: center;
 }
 
-.forgetpassword{
-    text-align: right;
-}
-
-.btn-class{
+.btn-class button {
+    border: none;
+    color: white;
+    margin-top: 37px;
     text-align: center;
+    font-weight: 500;
+    width: 170px;
+    height: 58.4px;
+    background: #16A0A9;
+    border-radius: 32px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 19px;
+
+}
+small{
+    display: block;
+    position: relative;
+    text-align: left;
+    color: red;
+    margin-left: 60px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 300;
+}
+/* input.ng-invalid.ng-touched{
+    border: 2px solid red;
+} */
+
+h5{
+    font-family: 'Poppins';
+    font-weight: 500;
+    color: red;
+    margin-bottom: 10px;
+    margin-top: -20px;
 }

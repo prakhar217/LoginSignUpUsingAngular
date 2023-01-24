@@ -7,14 +7,28 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./forgetpassword.component.css']
 })
 export class ForgetpasswordComponent implements OnInit {
-  
-  forgetPasswordForm!:FormGroup
+
+  forgetPasswordForm!: FormGroup
   regexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,30}$/
   constructor() { }
 
-  onSubmit(){
+  onSubmit() {
     console.log(this.forgetPasswordForm);
-    
+    let userAll = localStorage.getItem('userArray')
+    let parseuser = JSON.parse(userAll as string);
+
+    parseuser = parseuser.map((user: any) => {
+      this.forgetPasswordForm.value['email']
+      if (user.email === this.forgetPasswordForm.value['email'] && user.username === this.forgetPasswordForm.value['username']) {
+        user.password = this.forgetPasswordForm.value['newPassword']
+        return user
+      } else {
+        return user
+      }
+    })
+    console.log(parseuser);
+
+    localStorage.setItem('userArray', JSON.stringify(parseuser))
   }
   checkIfUsernameExist(control: FormControl) {
     let userExist = {
@@ -24,11 +38,14 @@ export class ForgetpasswordComponent implements OnInit {
     let parsedUser = JSON.parse(oldUser as string)
     parsedUser.forEach((user: any) => {
       if (user.username === control.value) {
-        return userExist['user'] = true
+        console.log('Hello');
+        return null
       } else {
-        return null;
+        return userExist['user'] = true;
       }
     });
+    console.log(userExist['user']);
+    
     return userExist['user'] ? userExist : null
   }
 
@@ -39,21 +56,25 @@ export class ForgetpasswordComponent implements OnInit {
     let oldUser = localStorage.getItem('userArray');
     let parsedUser = JSON.parse(oldUser as string)
 
-     parsedUser.forEach((user: any) => {
+    parsedUser.forEach((user: any) => {
+      // console.log(user.email === control.value );
+      
       if (user.email === control.value) {
-        return emailExist['emailif'] = true
-      } else {
         return null
+      } else {
+        return emailExist['emailif'] = true
       }
     });
+    console.log(emailExist['emailif'] ? emailExist : null);
+    
     return emailExist['emailif'] ? emailExist : null
   }
 
   ngOnInit(): void {
     this.forgetPasswordForm = new FormGroup({
-      username : new FormControl(null,[Validators.required,this.checkIfUsernameExist]),
-      email : new FormControl(null,[Validators.required,Validators.email,this.checkIfEmailExist]),
-      newPassword : new FormControl(null,[Validators.required,Validators.pattern(this.regexPassword)])      
+      username: new FormControl(null, [Validators.required, this.checkIfUsernameExist]),
+      email: new FormControl(null, [Validators.required, Validators.email, this.checkIfEmailExist]),
+      newPassword: new FormControl(null, [Validators.required, Validators.pattern(this.regexPassword)])
     })
   }
 }

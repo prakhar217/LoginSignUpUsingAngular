@@ -13,15 +13,19 @@ export class SigninComponent implements OnInit{
   constructor(){}
   checkIfUsernameExist(control: FormControl) {
     let userExist = {
-      user: false
+      user: true
     }
     let oldUser = localStorage.getItem('userArray');
     let parsedUser = JSON.parse(oldUser as string)
     parsedUser.forEach((user: any) => {
+      console.log(control.value);
+      
       if (user.username === control.value) {
-        return userExist['user'] = true
+        console.log(user.username);
+        
+        return null
       } else {
-        return null;
+        return userExist['user'] = false;
       }
     });
     return userExist['user'] ? userExist : null
@@ -35,16 +39,19 @@ export class SigninComponent implements OnInit{
     let parsedUser = JSON.parse(oldUser as string)
     parsedUser.forEach((user: any) => {
       if (user.password === control.value) {
-        return passwordExist['pass'] = true
+        return null
       } else {
-        return null;
+        return passwordExist['pass'] = true;
       }
     });
-    return passwordExist['pass'] ? passwordExist : null
+    return passwordExist['pass'] ? null : passwordExist
   }
 
   onSubmit(){
-    console.log(this.signInForm);
+    console.log(this.signInForm.valid);
+    if(this.signInForm.valid){
+      location.href = 'https://www.digivalet.com/'
+    }
   }
 
   ngOnInit(): void {
