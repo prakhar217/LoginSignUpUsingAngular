@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Dataservice } from '../data.service';
 
 @Component({
   selector: 'app-updateform',
@@ -9,10 +10,16 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class UpdateformComponent implements OnInit {
     
     updateForm !: FormGroup
-
-    constructor(){}
+    userArray !: any 
+    @Input() userId: any
+    constructor(private dataservice : Dataservice){}
+  
+    
 
     ngOnInit(): void {
+      console.log(this.userId);
+
+      this.userArray = this.dataservice.fetchData2()
       this.updateForm = new FormGroup({
         username : new FormControl(null),
         email : new FormControl(null),
@@ -20,10 +27,13 @@ export class UpdateformComponent implements OnInit {
         contact : new FormControl(null),
         role : new FormControl(null)
       })
+      
+      
     }
 
     onSubmit(){
       console.log(this.updateForm);
+      console.log(this.userId);
     }
 
 }

@@ -10,8 +10,8 @@ import { Dataservice } from '../data.service';
 export class UserpaginationComponent implements OnInit {
   
   allUser !: any 
-  // @ViewChild('dt') dt: Table | undefined;
-  display = true
+  userToUpdate !: any
+  display = false
   constructor(private dataservice : Dataservice){}
   
   ngOnInit(): void {
@@ -19,7 +19,8 @@ export class UserpaginationComponent implements OnInit {
     
   }
 
-  onUpdateClick(){
+  onUpdateClick(index : any){
+    this.userToUpdate = index
     this.display = !this.display
   }
 

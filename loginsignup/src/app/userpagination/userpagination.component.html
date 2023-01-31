@@ -28,7 +28,7 @@
             <td>{{user.contact}}</td>
             <td>{{user.role}}</td>
             <td>
-                <button pButton type="button" label="Update"  (click)="onUpdateClick()" ></button> 
+                <button pButton type="button" label="Update"  (click)="onUpdateClick(index)" ></button> 
                 <button pButton type="button" label="Delete" class="p-button-danger" (click)="onDeleteClick(index)" ></button>
             </td>
         </tr>
@@ -36,5 +36,5 @@
 </p-table>
 
 <p-dialog header="Update Details" [(visible)]="display" [modal]="true" [style]="{'width':'50vw'}">
-    <app-updateform></app-updateform>
+    <app-updateform [userId] = "userToUpdate" ></app-updateform>
 </p-dialog>
