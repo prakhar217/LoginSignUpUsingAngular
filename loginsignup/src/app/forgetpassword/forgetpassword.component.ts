@@ -18,7 +18,6 @@ export class ForgetpasswordComponent implements OnInit {
     let parseuser = JSON.parse(userAll as string);
 
     parseuser = parseuser.map((user: any) => {
-      this.forgetPasswordForm.value['email']
       if (user.email === this.forgetPasswordForm.value['email'] && user.username === this.forgetPasswordForm.value['username']) {
         user.password = this.forgetPasswordForm.value['newPassword']
         return user
@@ -26,48 +25,48 @@ export class ForgetpasswordComponent implements OnInit {
         return user
       }
     })
-    console.log(parseuser);
+    // console.log(parseuser);
 
     localStorage.setItem('userArray', JSON.stringify(parseuser))
   }
   checkIfUsernameExist(control: FormControl) {
     let userExist = {
-      user: false
+      user: true
     }
     let oldUser = localStorage.getItem('userArray');
     let parsedUser = JSON.parse(oldUser as string)
-    parsedUser.forEach((user: any) => {
-      if (user.username === control.value) {
-        console.log('Hello');
-        return null
-      } else {
-        return userExist['user'] = true;
-      }
-    });
-    console.log(userExist['user']);
+
+    let foundUser = parsedUser.find((user :any)=>{
+       return user.username === control.value
+    })
     
-    return userExist['user'] ? userExist : null
+    
+    if(foundUser){
+      return null
+    }
+    else{
+      return userExist
+    }
   }
 
   checkIfEmailExist(control: FormControl) {
     let emailExist = {
-      emailif: false
+      emailif: true
     }
     let oldUser = localStorage.getItem('userArray');
     let parsedUser = JSON.parse(oldUser as string)
 
-    parsedUser.forEach((user: any) => {
-      // console.log(user.email === control.value );
+    let foundUser = parsedUser.find((user:any)=>{   
+      console.log(user.email);
       
-      if (user.email === control.value) {
-        return null
-      } else {
-        return emailExist['emailif'] = true
-      }
-    });
-    console.log(emailExist['emailif'] ? emailExist : null);
-    
-    return emailExist['emailif'] ? emailExist : null
+        return user.email === control.value
+    })
+    if(foundUser){  
+      return null
+    }
+    else{
+      return emailExist
+    }
   }
 
   ngOnInit(): void {

@@ -1,5 +1,7 @@
+import { formatNumber } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signin',
@@ -10,47 +12,57 @@ export class SigninComponent implements OnInit{
 
   signInForm !:FormGroup
 
-  constructor(){}
+  constructor(private router : Router){}
   checkIfUsernameExist(control: FormControl) {
     let userExist = {
       user: true
     }
     let oldUser = localStorage.getItem('userArray');
     let parsedUser = JSON.parse(oldUser as string)
-    parsedUser.forEach((user: any) => {
-      console.log(control.value);
-      
-      if (user.username === control.value) {
-        console.log(user.username);
-        
-        return null
-      } else {
-        return userExist['user'] = false;
-      }
-    });
-    return userExist['user'] ? userExist : null
+
+    let foundUser = parsedUser.find((user : any)=>{
+      return user.username === control.value
+    })
+
+    if(foundUser){
+      return null
+    }else{
+      return userExist
+    }
+
   }
 
   checkIfPasswordMatch(control : FormControl){
     let passwordExist = {
-      pass: false
+      pass: true
     }
     let oldUser = localStorage.getItem('userArray');
     let parsedUser = JSON.parse(oldUser as string)
-    parsedUser.forEach((user: any) => {
-      if (user.password === control.value) {
-        return null
-      } else {
-        return passwordExist['pass'] = true;
-      }
-    });
-    return passwordExist['pass'] ? null : passwordExist
+
+    let foundUser = parsedUser.find((user:any)=>{
+      return user.password === control.value
+    })
+
+    if(foundUser){
+      return null
+    }
+    else{
+      return passwordExist
+    }
   }
 
-  onSubmit(){
+  onSubmit(signInRef : HTMLElement){
+    console.log(signInRef);
+    
     console.log(this.signInForm.valid);
+    console.log(this.signInForm);
+    let obj = {
+      username : this.signInForm.controls['username'].value
+    }
+
     if(this.signInForm.valid){
-      location.href = 'https://www.digivalet.com/'
+      sessionStorage.setItem('activeUser',JSON.stringify(obj))
+      this.router.navigateByUrl('/home')
     }
   }
 

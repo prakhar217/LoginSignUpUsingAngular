@@ -1,0 +1,7 @@
+::ng-deep .p-datatable .p-datatable-thead > tr > th {
+    background-color: bisque;
+} 
+
+.delete{
+    padding: 8px 18px;
+}

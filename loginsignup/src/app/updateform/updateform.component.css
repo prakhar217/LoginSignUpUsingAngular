@@ -1,33 +1,4 @@
 
-.img-class {
-    text-align: center;
-    margin-top: 55px;
-    margin-bottom: 70px;
-}
-
-.container {
-    margin: auto;
-    background-color: white;
-    width: 642px;
-    height: 484px;
-    display: flex;
-    flex-direction: column;
-}
-
-.heading {
-    text-align: center;
-    margin-top: 51px;
-    margin-bottom: 64px;
-    margin-top: 63px;
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 36px;
-    line-height: 15px;
-    text-align: center;
-    color: #000000;
-}
-
 .form-group{
     margin-bottom: 24px;
 }
@@ -93,18 +64,4 @@ small{
 }
 input.ng-invalid.ng-touched{
     border: 2px solid red;
-}
-
-
-.forgetpassword {
-
-    margin-top: 10px;
-    color: #16A0A9;
-    list-style: none;
-    text-align: center;
-}
-
-.forgetpassword a {
-    color: #16A0A9;
-    text-decoration: none;
 }

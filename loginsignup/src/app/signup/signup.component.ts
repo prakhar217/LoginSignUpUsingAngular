@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { retry } from 'rxjs';
+import { Dataservice } from '../data.service';
 
 @Component({
   selector: 'app-signup',
@@ -12,13 +12,17 @@ export class SignupComponent implements OnInit {
   userArray: string[] = []
   regexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,30}$/
 
-  oldArray = localStorage.getItem('userArray');
-  parsedArray = JSON.parse(this.oldArray as string)
-  checkIfUsernameExist(control: FormControl) {
+  constructor(private dataservice: Dataservice) {
+
+  }
+
+  signedUser = this.dataservice.fetchData()
+
+  checkIfUsernameExist(control: FormControl): { user: boolean; } | null {
     let userExist = {
       user: false
     }
-    if(localStorage.length !== 0){
+    if (localStorage.length !== 0) {
       let oldUser = localStorage.getItem('userArray');
       let parsedUser = JSON.parse(oldUser as string)
       parsedUser.forEach((user: any) => {
@@ -37,13 +41,11 @@ export class SignupComponent implements OnInit {
     let emailExist = {
       emailif: false
     }
-    console.log(localStorage.length  );
-    
-    if(localStorage.length !== 0){
+    if (localStorage.length !== 0) {
       let oldUser = localStorage.getItem('userArray');
       let parsedUser = JSON.parse(oldUser as string)
-  
-       parsedUser.forEach((user: any) => {
+
+      parsedUser.forEach((user: any) => {
         if (user.email === control.value) {
           return emailExist['emailif'] = true
         } else {
@@ -56,33 +58,27 @@ export class SignupComponent implements OnInit {
   }
 
   onSubmit() {
-    
-
     if (this.signUpForm.valid) {
       if (JSON.parse(localStorage.getItem('userArray') as string) !== null) {
-        this.parsedArray.push(this.signUpForm.value)
-        localStorage.setItem('userArray', JSON.stringify(this.parsedArray))
+        this.signedUser.push(this.signUpForm.value)
+        localStorage.setItem('userArray', JSON.stringify(this.signedUser))
       }
       else {
         this.userArray.push(this.signUpForm.value)
         localStorage.setItem('userArray', JSON.stringify(this.userArray))
       }
-      location.href="http://localhost:4200/signin"
+      location.href = "http://localhost:4200/signin"
     } else {
       console.log('User Exists');
     }
   }
 
-  constructor() { }
-
   ngOnInit(): void {
+    console.log(this.dataservice.fetchData());
     this.signUpForm = new FormGroup({
       email: new FormControl(null, [Validators.required, Validators.email, Validators.maxLength(30), this.checkIfEmailExist]),
       username: new FormControl(null, [Validators.required, Validators.maxLength(20), this.checkIfUsernameExist]),
       password: new FormControl(null, [Validators.required, Validators.maxLength(20), Validators.pattern(this.regexPassword)])
     })
-
-    console.log(this.signUpForm);
-    
   }
 }

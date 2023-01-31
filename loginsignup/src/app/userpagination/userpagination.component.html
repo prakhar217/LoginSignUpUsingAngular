@@ -1,0 +1,40 @@
+
+
+<p-table #dt [value]="allUser" [paginator]="true" [rows]="5" [globalFilterFields]="['username']">
+    <ng-template pTemplate="caption">
+        <div class="flex">
+            <span class="p-input-icon-left ml-auto">
+                <i class="pi pi-search"></i>
+                <input type="text" #textInput pInputText (input)="dt.filterGlobal(textInput.value,'contains')" placeholder="Search keyword" />
+            </span>
+        </div>
+    </ng-template>
+
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Contact</th>
+            <th>Role</th>
+            <th>Actions</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-user let-index="rowIndex">
+        <tr>
+            <td>{{user.username}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.address}}</td>
+            <td>{{user.contact}}</td>
+            <td>{{user.role}}</td>
+            <td>
+                <button pButton type="button" label="Update"  (click)="onUpdateClick()" ></button> 
+                <button pButton type="button" label="Delete" class="p-button-danger" (click)="onDeleteClick(index)" ></button>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
+
+<p-dialog header="Update Details" [(visible)]="display" [modal]="true" [style]="{'width':'50vw'}">
+    <app-updateform></app-updateform>
+</p-dialog>

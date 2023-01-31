@@ -3,12 +3,13 @@
 </div>
 
 <div class="container">
-    <h1 class="heading">Welcome Back</h1>
+    <h1 class="heading">Welcome</h1>
 
     <div class="form-container">
-        <form action="" [formGroup]="signInForm" (ngSubmit)="onSubmit()">
-            <h5
-                *ngIf="(signInForm.get('username')?.errors?.['user'] && signInForm.get('username')?.touched) && (signInForm.get('password')?.errors?.['pass']&& signInForm.get('password')?.touched)">
+        <form action="" [formGroup]="signInForm" (ngSubmit)="onSubmit(signInRef)" #signInRef>
+            <h5 
+             *ngIf="!signInForm.pristine && signInForm.valid
+            || signInForm.get('username')?.errors?.['user'] && signInForm.get('username')?.touched && signInForm.get('password')?.errors?.['pass']&& signInForm.get('password')?.touched">
                 Username or password is Wrong</h5>
             <div class="form-group">
                 <input type="text" placeholder="Username" formControlName="username">

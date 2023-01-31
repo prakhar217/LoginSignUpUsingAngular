@@ -1,21 +1,23 @@
-
-.forgetpassword{
+.forgetpassword {
     text-align: right;
     margin-right: 61px;
-    color:#16A0A9;
+    color: #16A0A9;
     /* text-decoration: none;
      */
-     list-style: none;
+    list-style: none;
 }
-.forgetpassword a{
-    color: #16A0A9;  
+
+.forgetpassword a {
+    color: #16A0A9;
     text-decoration: none;
 }
+
 .img-class {
     text-align: center;
     margin-top: 55px;
     margin-bottom: 70px;
 }
+
 .container {
     margin: auto;
     background-color: white;
@@ -39,7 +41,7 @@
     color: #000000;
 }
 
-.form-group{
+.form-group {
     margin-bottom: 24px;
 }
 
@@ -53,14 +55,22 @@
     font-weight: 300;
     font-size: 17px;
     line-height: 15px;
-    color: #9A9A9A;
     border: 1px solid #CCCCCC;
     filter: drop-shadow(0px 0px 4px rgba(142, 163, 91, 0.25));
     border-radius: 4px;
 }
 
-.form-container input:focus{
+.form-container input:focus {
     outline: none;
+}
+
+.form-container::placeholder {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 15px;
+    color: #9A9A9A;
 }
 
 .form-container {
@@ -84,7 +94,8 @@
     line-height: 19px;
 
 }
-small{
+
+small {
     display: block;
     position: relative;
     text-align: left;
@@ -94,11 +105,12 @@ small{
     font-style: normal;
     font-weight: 300;
 }
+
 /* input.ng-invalid.ng-touched{
     border: 2px solid red;
 } */
 
-h5{
+h5 {
     font-family: 'Poppins';
     font-weight: 500;
     color: red;

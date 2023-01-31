@@ -1,8 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Chivo:wght@300&family=Inter&family=Poppins:wght@100;200;400;500;700&display=swap');
 
-
-
 *{
     margin: 0px;
     box-sizing: border-box;
@@ -10,4 +8,14 @@
 }
 body{
     background: rgba(22, 160, 169, 0.06);
+}
+app-dashboard{
+    display: flex;
+    justify-content: space-evenly;
+}
+app-allusers{
+    width: 70%;
+}
+app-rolesaccordion{
+    width: 70%;
 }
