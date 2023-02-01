@@ -62,7 +62,7 @@ export class SigninComponent implements OnInit{
 
     if(this.signInForm.valid){
       sessionStorage.setItem('activeUser',JSON.stringify(obj))
-      this.router.navigateByUrl('/home')
+      this.router.navigateByUrl('/dashboard')
     }
   }
 

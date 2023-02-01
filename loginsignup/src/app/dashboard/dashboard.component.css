@@ -1,3 +1,41 @@
-p-sidebar{
-    width: 20%;
+.container{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.p-sidebar-left{
+    width: 10rem;
+}
+
+.sidebar{
+    display: flex;
+}
+.sidebar ::ng-deep .p-sidebar {
+    display: flex;
+    height: 100vh;
+    position: relative;
+}
+.sidebar ::ng-deep .p-sidebar-left {
+    width: 15rem;
+}
+
+.left-content{
+    width: 100vw;
+    height: 100vh;
+}
+
+.side-bar ::ng-deep .p-tabview {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+.logout{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: white;
+}
+.logout p{
+    margin-right: 10px;
 }

@@ -1,10 +1,32 @@
-<p-sidebar [style]="{'width':'inherit'}" [(visible)]="visibleSidebar1" [baseZIndex]="10000" [modal]="false" [showCloseIcon]="false">
-    <h1>Dashboard</h1>
-    <h2> <a style="text-decoration: none; color: black;" routerLink="allusers">All users</a></h2>
-    <h2> <a style="text-decoration: none; color: black;" routerLink="roles">Roles</a></h2>
-    <h2> <a style="text-decoration: none; color: black;" routerLink="userpagination">Pagination</a></h2>
-</p-sidebar>
+<div class="sidebar">
+  <p-sidebar
+    [(visible)]="visibleSidebar1"
+    [modal]="false"
+    [showCloseIcon]="false"
+  >
+    <ng-template pTemplate="header">Dashboard</ng-template>
+  </p-sidebar>
+  <div class="left-content">
+    <div class="logout">
+        <p>Logged in user {{loggedInUser}}</p>
+        <button pButton type="button" label="Logout" class="p-button-primary" (click)="onSubmit()" ></button>
+    </div>
+    <p-tabView style="
+    width: 100vw; height: 100vh;">
+      <p-tabPanel header="Home" >
+          <app-home></app-home>
+      </p-tabPanel>
+      <p-tabPanel header="Roles">
+        <app-rolesaccordion></app-rolesaccordion>
+      </p-tabPanel>
+      <p-tabPanel header="Fetched user" style="height: 100vh;">
+        <app-userpagination></app-userpagination>
+      </p-tabPanel>
+      <p-tabPanel header="All User">
+        <app-allusers></app-allusers>
+      </p-tabPanel>
+  </p-tabView>
+  </div>
 
+</div>
 
-
-<router-outlet></router-outlet>

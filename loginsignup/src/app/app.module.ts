@@ -24,8 +24,9 @@ import { HomeComponent } from './home/home.component';
 import { UserpaginationComponent } from './userpagination/userpagination.component';
 import {InputTextModule} from 'primeng/inputtext';
 import { UpdateformComponent } from './updateform/updateform.component';
-
-
+import {TabMenuModule} from 'primeng/tabmenu';
+import {MenuItem} from 'primeng/api';
+import {TabViewModule} from 'primeng/tabview';
 
 
 
@@ -64,6 +65,7 @@ const appRoute: Routes = [
     HomeComponent,
     UserpaginationComponent,
     UpdateformComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -80,7 +82,9 @@ const appRoute: Routes = [
     AccordionModule ,
     PaginatorModule,
     InputTextModule,
-    DialogModule
+    DialogModule,
+    TabMenuModule,
+    TabViewModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -9,17 +9,4 @@
 body{
     background: rgba(22, 160, 169, 0.06);
 }
-app-dashboard{
-    display: flex;
-    justify-content: space-evenly;
-}
-app-allusers{
-    width: 70%;
-}
-app-rolesaccordion{
-    width: 70%;
-}
 
-app-pagination{
-    width: 80%;
-}

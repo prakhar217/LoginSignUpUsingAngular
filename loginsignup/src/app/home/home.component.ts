@@ -12,13 +12,17 @@ export class HomeComponent implements OnInit {
   constructor(private route : Router){}
 
   ngOnInit(){
-    let userObj = JSON.parse(sessionStorage.getItem('activeUser') as any) 
+    if(sessionStorage.length){
+      let userObj = JSON.parse(sessionStorage.getItem('activeUser') as any) 
      
-    this.loggedInUser = userObj.username
+      this.loggedInUser = userObj.username
+    }
+
 
   }
 
   onLogOut(){
+
     sessionStorage.clear()
     this.route.navigateByUrl('/signin')
   }

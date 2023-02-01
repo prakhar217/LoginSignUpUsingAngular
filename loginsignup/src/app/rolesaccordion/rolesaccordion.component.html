@@ -1,7 +1,21 @@
-<h1>Roles</h1>
-<div class="action-btn">
-    <button pButton type="button" label="Add" (click)="onAdd()" ></button>
-    <button pButton type="button" label="Save" class="p-button-success" (click)="onSubmit()" ></button>
+<div class="container">
+    <h1>Roles</h1>
+    <div class="action-btn">
+        <button pButton type="button" label="Add" (click)="onAdd()" ></button>
+        <button pButton type="button" label="Save" class="p-button-success" (click)="onSubmit()" ></button>
+    </div>
+</div>
+
+<div class="newaccord-cont" *ngFor="let value of newValues; let i = index" >
+    <p-accordion>
+        <p-accordionTab header="{{value.value ? value.value : 'Enter a role'}}" >
+            <label for="value{{i}}">RoleName: </label>
+            <input type="text" [(ngModel)]="value.value" #name = 'ngModel' id="value{{i}}" name="value{{i}}">
+            <br>
+            <label for="">Permissions: </label>
+            <input type="text" [(ngModel)] = "value.permission" #permission = 'ngModel' id="value{{i}}" name="value{{i}}">
+        </p-accordionTab>
+    </p-accordion>
 </div>
 
 <div class="accordion-container" *ngFor="let value of values; let i = index" >

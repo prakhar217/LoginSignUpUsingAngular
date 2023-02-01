@@ -8,7 +8,9 @@ import { Component } from '@angular/core';
 export class RolesaccordionComponent {
   roleName : any = ''
 
-  values : any = [{value:'',permission : ''}]
+  values : any = []
+
+  newValues : any = []
 
 
   ngOnInit(){
@@ -18,15 +20,15 @@ export class RolesaccordionComponent {
 
   onSubmit(){
    console.log(this.values);
+   this.values.push(this.newValues[0])
+   this.newValues = []
    localStorage.setItem('rolesArray', JSON.stringify(this.values))
   }
 
  
 
   onAdd(){
-    
-    console.log(this.values);
-    
-    this.values.push({value : "",permission : ""})
+    console.log(this.newValues);
+    this.newValues.push({value : "",permission : ""})
   }
 }
