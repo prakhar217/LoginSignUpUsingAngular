@@ -43,6 +43,10 @@ const appRoute: Routes = [
       {
         path : 'roles',
         component:RolesaccordionComponent
+      },
+      {
+        path:'userpagination',
+        component:UserpaginationComponent
       }
     ]
   }

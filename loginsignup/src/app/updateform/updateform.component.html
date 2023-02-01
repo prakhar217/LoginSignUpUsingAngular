@@ -3,18 +3,23 @@
         <form action="" [formGroup]="updateForm" (ngSubmit)="onSubmit()" >
             <div class="form-group">
                 <input type="text" placeholder="Username" formControlName="username">
+                <small *ngIf="updateForm.get('username')?.errors?.['required'] && updateForm.get('username')?.touched" >Username cannot be empty</small>
             </div>
             <div class="form-group">
-                <input type="text" placeholder="Email" formControlName="email">                         
+                <input type="text" placeholder="Email" formControlName="email"> 
+                <small *ngIf="updateForm.get('email')?.errors?.['required'] && updateForm.get('email')?.touched" >Email cannot be empty</small>                        
             </div>
             <div class="form-group">
                 <input type="text" placeholder="Address" formControlName="address">
+                <small *ngIf="updateForm.get('address')?.errors?.['required'] && updateForm.get('address')?.touched" >Address cannot be empty</small>
             </div>
             <div class="form-group">
                 <input type="text" placeholder="Contact" formControlName="contact">
+                <small *ngIf="updateForm.get('contact')?.errors?.['required'] && updateForm.get('contact')?.touched" >Contact cannot be empty</small>
             </div>
             <div class="form-group">
                 <input type="text" placeholder="Role" formControlName="role">
+                <small *ngIf="updateForm.get('role')?.errors?.['required'] && updateForm.get('role')?.touched" >Role cannot be empty</small>
             </div>
             <div class="btn-class">
                 <button type="submit">Update</button> 

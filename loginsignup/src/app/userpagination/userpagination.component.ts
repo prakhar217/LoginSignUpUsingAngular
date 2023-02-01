@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit } from '@angular/core';
 import { elementAt } from 'rxjs';
 import { Dataservice } from '../data.service';
 
@@ -33,5 +33,8 @@ export class UserpaginationComponent implements OnInit {
     alert('You said no')
   }
     
+  }
+  updateArray(event : Event){
+    console.log(event);
   }
 }

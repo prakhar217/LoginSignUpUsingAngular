@@ -1,5 +1,5 @@
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Dataservice } from '../data.service';
 
 @Component({
@@ -24,15 +24,16 @@ export class UpdateformComponent implements OnInit {
 
     this.userArray = this.dataservice.fetchData2()
     this.updateForm = new FormGroup({
-      username: new FormControl(null),
-      email: new FormControl(null),
-      address: new FormControl(null),
-      contact: new FormControl(null),
-      role: new FormControl(null)
+      username: new FormControl(null,Validators.required),
+      email: new FormControl(null, [Validators.required , Validators.email]),
+      address: new FormControl(null,Validators.required),
+      contact: new FormControl(null,[Validators.required]),
+      role: new FormControl(null,Validators.required)
     })
 
 
   }
+
 
   onSubmit() {
     let newArray = []
@@ -41,10 +42,13 @@ export class UpdateformComponent implements OnInit {
         return user.username = this.updateForm.controls['username'].value
       }
     })
+
+    
     console.log(this.userArray);
     console.log(this.updateForm);
     console.log(this.userId);
     console.log(newArray);
+    this.newArrayEmit.emit(this.userArray)
   }
 
 }
